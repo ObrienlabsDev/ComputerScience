@@ -17,5 +17,10 @@ public class BinaryTreeTest {
 		List<Integer> list = tree.inOrderTraversal();
 		assertNotNull(list);
 		
+		tree.add(10);
+		tree.add(16);
+		BinaryTree<Integer> subTree = tree.getRight();
+		assertNotNull(subTree);
+		
 	}
 }
