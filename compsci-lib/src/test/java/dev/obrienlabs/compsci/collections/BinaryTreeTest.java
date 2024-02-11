@@ -27,11 +27,17 @@ public class BinaryTreeTest {
 		List<BinaryTree<Integer>> list = tree.inOrderTraversal();
 		assertNotNull(list);
 
-		BinaryTree<Integer> subTree = tree.getRight();
+		BinaryTree<Integer> subTree = tree.getLeft();
 		assertNotNull(subTree);
-		assertTrue(subTree.getData().intValue() == 16);
-		System.out.println("right subtree:" + subTree.getData());
+		assertTrue(subTree.getData().intValue() == 2);
+		System.out.println("left subtree: " + subTree.getData());
 		System.out.println("tree: " + tree);
+
+		List<BinaryTree<Integer>> leftList = tree.inOrderTraversalOnlyLeft();
+		assertNotNull(leftList);
+		StringBuffer buffer = new StringBuffer();
+		leftList.stream().forEach(x -> buffer.append(x.getData()).append(","));
+		System.out.println("left nodes: " + tree.printOn(leftList));
 		
 	}
 }
