@@ -18,12 +18,14 @@ public class BinaryTreeTest {
 	@Test
 	public void testContructor() {
 		BinaryTree<Integer> tree = new BinaryTreeImpl<Integer>();
-		List<Integer> list = tree.inOrderTraversal();
-		assertNotNull(list);
+
 		
 		// Add a list of numbers
 		List<Integer> numbersToInsert = Stream.of(8,16,32,64,48,2,128).collect(Collectors.toList());
 		tree.add(numbersToInsert);
+		
+		List<BinaryTree<Integer>> list = tree.inOrderTraversal();
+		assertNotNull(list);
 
 		BinaryTree<Integer> subTree = tree.getRight();
 		assertNotNull(subTree);

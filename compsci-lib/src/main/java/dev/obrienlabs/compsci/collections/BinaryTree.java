@@ -12,7 +12,8 @@ public interface BinaryTree<T extends Comparable<? super T>> {
 	T getData();
 	boolean search(T value);
 	Integer depth();
-	List<T> inOrderTraversal();
-	List<T> inOrderTraversalHelper(List<T> list);
-	
+	List<BinaryTree<T>> inOrderTraversal();
+	List<BinaryTree<T>> inOrderTraversalHelper(List<BinaryTree<T>> list);
+	List<BinaryTree<T>> inOrderTraversalOnlyLeft();
+	List<BinaryTree<T>> inOrderTraversalOnlyLeftHelper(List<BinaryTree<T>> list);	
 }

@@ -24,19 +24,34 @@ public class BinaryTreeImpl<T extends Comparable<? super T>> implements BinaryTr
 	}
 	
 	@Override
-	public List<T> inOrderTraversal() {
-		return inOrderTraversalHelper(new ArrayList<T>());
+	public List<BinaryTree<T>> inOrderTraversal() {
+		return inOrderTraversalHelper(new ArrayList<BinaryTree<T>>());
 	}
 
 	@Override
-	public List<T> inOrderTraversalHelper(List<T> list) {
+	public List<BinaryTree<T>> inOrderTraversalHelper(List<BinaryTree<T>> list) {
 		if(null != left)
 			left.inOrderTraversalHelper(list);
-		list.add(data);
+		list.add(this);
 		if(null != right)
 			right.inOrderTraversalHelper(list);
 		return list;
 	}
+
+	@Override
+	public List<BinaryTree<T>> inOrderTraversalOnlyLeft() {
+		return inOrderTraversalOnlyLeftHelper(new ArrayList<BinaryTree<T>>());
+	}
+
+	@Override
+	public List<BinaryTree<T>> inOrderTraversalOnlyLeftHelper(List<BinaryTree<T>> list) {
+		if(null != left)
+			left.inOrderTraversalOnlyLeftHelper(list);
+		list.add(this);
+		if(null != right)
+			right.inOrderTraversalOnlyLeftHelper(list);
+		return list;
+	}	
 	
 	@Override
 	public void add(T value) {
@@ -80,7 +95,7 @@ public class BinaryTreeImpl<T extends Comparable<? super T>> implements BinaryTr
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		inOrderTraversal().stream().forEach(i -> buffer.append(i).append(","));
+		inOrderTraversal().stream().forEach(i -> buffer.append(i.getData()).append(","));
 		return buffer.toString();
 	}
 	
