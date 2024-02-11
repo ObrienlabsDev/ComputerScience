@@ -38,6 +38,7 @@ public class BinaryTreeTest {
 		StringBuffer buffer = new StringBuffer();
 		leftList.stream().forEach(x -> buffer.append(x.getData()).append(","));
 		System.out.println("left nodes: " + tree.printOn(leftList));
+		System.out.println("left count: " + Integer.parseInt(Long.toString(leftList.stream().count())));
 		
 	}
 }
