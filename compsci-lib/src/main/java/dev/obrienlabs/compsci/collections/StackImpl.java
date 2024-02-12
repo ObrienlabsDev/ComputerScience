@@ -2,13 +2,56 @@ package dev.obrienlabs.compsci.collections;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public class Stack {
+public class StackImpl {
 
+	String pushKeys = "[{(";
+	String pullKeys = "]})";
+	// move these
+	boolean balanced = true;	
+	Stack<String> stack = new Stack<String>();
+	/*
+	 * Using streams and stack from java 8
+	 * 
+	 */
 	boolean isBalanced(String s) {
+		// stream and check push/pull pairs
+		s.chars().mapToObj(c -> (char)c).forEach(mapConsumer);
+		if(!stack.isEmpty())
+			return false;
+		else
+			return balanced;
+	}
+	
+	Consumer<Character> mapConsumer = new Consumer<Character>() {
+		public void accept(Character s) {
+			if(pushKeys.contains(s.toString())) {
+				stack.push(s.toString());
+			} else {
+				if(!stack.isEmpty()) { // check for too many closing brackets
+					String y = stack.pop();
+					// if pull of last push corresponds to current char - ok				
+					if(pushKeys.indexOf(y) != pullKeys.indexOf(s.toString())) {
+						balanced = false;
+					}
+				} else {
+					balanced = false;
+				}
+			}
+		}
+	};
+	
+	/**
+	 * @deprecated
+	 * Using mix of pre-post Java 8
+	 * @param s
+	 * @return
+	 */
+	boolean isBalanced2(String s) {
 		boolean balanced = true;
-		// index is important
 		String pushKeys = "[{(";
 		String pullKeys = "]})";
 		Map<String, Integer> dictionaryIndex = new HashMap<String, Integer>();
@@ -63,8 +106,11 @@ public class Stack {
 	}
 	
 	public static void main(String[] args) {
-		Stack stack = new Stack();
-		String aString = "{}([()][])";
+		StackImpl stack = new StackImpl();
+		String aString = "{}([()][])"; // true
+		//String aString = "{}([()][]"; // false
+		//String aString = "{}([()][]))"; // false
+		//String aString = "{[}]"; // false - need to check pull removal
 		System.out.println(stack.isBalanced(aString));
 	}
 }
