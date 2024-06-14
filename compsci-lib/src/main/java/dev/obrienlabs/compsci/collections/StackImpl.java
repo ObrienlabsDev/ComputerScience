@@ -19,6 +19,7 @@ public class StackImpl {
 	 */
 	boolean isBalanced(String s) {
 		// stream and check push/pull pairs
+		stack = new Stack<String>();
 		s.chars().mapToObj(c -> (char)c).forEach(mapConsumer);
 		if(!stack.isEmpty())
 			return false;
