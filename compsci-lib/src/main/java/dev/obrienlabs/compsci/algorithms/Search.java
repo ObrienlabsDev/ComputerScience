@@ -25,8 +25,12 @@ public class Search {
 		List<Integer> list = Arrays.stream(input)
 				.boxed() // int to Integer
 				.collect(Collectors.toList());
-		list.forEach(x -> System.out.println(x));
-
+		//list.forEach(x -> System.out.println(x));
+		int i = 0;
+		List<Boolean> _list = list.stream()
+				.map(y -> y > list.subList(i, list.size()).stream().max((k, j) -> k.compareTo(j)).get())
+				.collect(Collectors.toList());;
+		_list.forEach(x -> System.out.println(x));
 	}
 	
 	public static void main(String[] args) {
