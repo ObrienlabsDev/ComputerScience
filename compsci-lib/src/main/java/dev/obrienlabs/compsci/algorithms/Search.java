@@ -2,6 +2,7 @@ package dev.obrienlabs.compsci.algorithms;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 public class Search {
@@ -12,7 +13,7 @@ public class Search {
 	 */
 	public void determineLeftToRightGlobalOrder() {
 		int[] input =  {4, 3, 2, 3, 1};
-		int[] output = {1,0,0,0,1};
+		int[] output = {1, 0, 0, 0, 1}; // whare 1=highest, 0=!highest
 		
 		// start iterating from left to right
 		// compare the current index with the sublist on the right - it must be GT
@@ -22,15 +23,24 @@ public class Search {
 		// O(1) storage complexity
 		
 		// for 1 pass
+		System.out.println("pass 1");
 		List<Integer> list = Arrays.stream(input)
 				.boxed() // int to Integer
 				.collect(Collectors.toList());
-		//list.forEach(x -> System.out.println(x));
-		int i = 0;
+		
+		// threadsafe non-final counter
+		AtomicLong counter = new AtomicLong(0);
+		
 		List<Boolean> _list = list.stream()
-				.map(y -> y > list.subList(i, list.size()).stream().max((k, j) -> k.compareTo(j)).get())
-				.collect(Collectors.toList());;
+				.map(y -> y > list.subList(counter.intValue(), list.size()).stream().max((k, j) -> k.compareTo(j)).get())
+				.collect(Collectors.toList());
 		_list.forEach(x -> System.out.println(x));
+		
+		System.out.println("pass 2");
+		List<Integer> list2 = Arrays.stream(input).boxed().collect(Collectors.toList());
+		
+		
+		//List<Boolean> _list = list.stream
 	}
 	
 	public static void main(String[] args) {
