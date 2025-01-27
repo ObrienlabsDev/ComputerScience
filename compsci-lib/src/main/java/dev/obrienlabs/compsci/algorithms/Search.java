@@ -6,6 +6,19 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 public class Search {
+	
+	
+	  public double filledCellsPercentage(int x, int y, int[][] cells) {
+
+		  // sum all 1s, divide by grid size XxY
+		  // flatten array, count
+		  long count = Arrays.stream(cells)
+				  .flatMapToInt(i -> Arrays.stream(i))//::stream)
+				  .count();
+		  System.out.println(count);
+		  return 1.0;
+
+	  }
 
 	/**
 	 * 20250123
@@ -45,6 +58,8 @@ public class Search {
 	
 	public static void main(String[] args) {
 		Search search = new Search();
-		search.determineLeftToRightGlobalOrder();
+		//search.determineLeftToRightGlobalOrder();
+		int[][] array = {{0,1,1},{1,0,0}};
+		search.filledCellsPercentage(2, 3, array );
 	}
 }

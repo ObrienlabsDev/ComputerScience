@@ -18,8 +18,6 @@ public class Filter {
 		String original = "ABAA";
 		String target = "BABB";
 		
-		Filter filter = new Filter();
-		
 		StringBuilder builder = original.chars()
 			.mapToObj(c -> (char) c)
 			.collect(StringBuilder::new, StringBuilder::append, StringBuilder::append); // supplier, accumulator, combiner
