@@ -10,13 +10,17 @@ public class Search {
 	
 	  public double filledCellsPercentage(int x, int y, int[][] cells) {
 
-		  // sum all 1s, divide by grid size XxY
+		  // sum all 1s, divide by grid size XxY 
 		  // flatten array, count
+		  // use x and y to shortcut to a max sum
+		  float total = x * y;
 		  long count = Arrays.stream(cells)
-				  .flatMapToInt(i -> Arrays.stream(i))//::stream)
+				  .flatMapToInt(Arrays::stream)//i -> Arrays.stream(i))//::stream)
+				  .filter(i -> i > 0)
 				  .count();
-		  System.out.println(count);
-		  return 1.0;
+		  float percentage = count / total;
+		  System.out.println("sum: " + count + " perc: " + percentage);
+		  return percentage;
 
 	  }
 
@@ -59,7 +63,7 @@ public class Search {
 	public static void main(String[] args) {
 		Search search = new Search();
 		//search.determineLeftToRightGlobalOrder();
-		int[][] array = {{0,1,1},{1,0,0}};
+		int[][] array = {{0,0,1},{1,0,0}};
 		search.filledCellsPercentage(2, 3, array );
 	}
 }
