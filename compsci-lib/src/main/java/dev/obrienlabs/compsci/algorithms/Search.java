@@ -7,22 +7,6 @@ import java.util.stream.Collectors;
 
 public class Search {
 	
-	
-	  public double filledCellsPercentage(int x, int y, int[][] cells) {
-
-		  // sum all 1s, divide by grid size XxY 
-		  // flatten array, count
-		  // use x and y to shortcut to a max sum
-		  float total = x * y;
-		  long count = Arrays.stream(cells)
-				  .flatMapToInt(Arrays::stream)//i -> Arrays.stream(i))//::stream)
-				  .filter(i -> i > 0)
-				  .count();
-		  float percentage = count / total;
-		  System.out.println("sum: " + count + " perc: " + percentage);
-		  return percentage;
-
-	  }
 
 	/**
 	 * 20250123
@@ -60,10 +44,42 @@ public class Search {
 		//List<Boolean> _list = list.stream
 	}
 	
+	
+	  public double filledCellsPercentage(int x, int y, int[][] cells) {
+		  // sum all 1s, divide by grid size XxY 
+		  // flatten array, count
+		  // use x and y to shortcut to a max sum
+		  float total = x * y;
+		  long count = Arrays.stream(cells)
+				  .flatMapToInt(Arrays::stream)//i -> Arrays.stream(i))//::stream)
+				  .filter(i -> i > 0)
+				  .count();
+		  float percentage = count / total;
+		  System.out.println("sum: " + count + " perc: " + percentage);
+		  return percentage;
+	  }
+	
+	  /*
+	   * 20250129 - sparsely fill a grid
+	  1-N slots
+	  M 1s
+	  k=4
+	  n=2
+	  s = [2,7]  
+	  001000010
+	  */
+	  public long getMaxSparseFill(long N, long K, long M, long[] S) {
+		  
+	    return 0L;
+	  }
+	  
+	  
 	public static void main(String[] args) {
 		Search search = new Search();
-		//search.determineLeftToRightGlobalOrder();
-		int[][] array = {{0,0,1},{1,0,0}};
-		search.filledCellsPercentage(2, 3, array );
+		//search.determineLeftToRightGlobalOrder2();
+		//int[][] array = {{0,0,1},{1,0,0}};
+		//search.filledCellsPercentage(2, 3, array );
+		long[] array = {2,6};
+		System.out.println(search.getMaxSparseFill(10L,1L,2L, array));
 	}
 }
