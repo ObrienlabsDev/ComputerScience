@@ -73,6 +73,7 @@ public class Search {
 		  // data structure? - use .filter (convert Array to List)
 		  List<Long> list = Arrays.stream(S).boxed().collect(Collectors.toList());
 		  // pass 1 mark S
+		  list.stream().forEach(System.out::println);
 		  // pass 2 mark 0 on spacing
 		  // pass 3 not required - mark ends >= 0
 		  // pass 4 iterate remaining - skip K
