@@ -69,15 +69,21 @@ public class Search {
 	  s = [2,7]  
 	  001000010
 	  */
-	  public long getMaxSparseFill(long N, long K, long M, long[] S) {
+	  public long getMaxSparseFill(long N, long K, long M, int[] S) {
 		  // data structure? - use .filter (convert Array to List)
-		  List<Long> list = Arrays.stream(S).boxed().collect(Collectors.toList());
+		  int[] array = new int[10];
+		  
+		  
+		  //List<Integer> setList = Arrays.stream(S).boxed().collect(Collectors.toList());
+		  Arrays.stream(S).forEach(n -> array[n-1] = 1);
 		  // pass 1 mark S
-		  list.stream().forEach(System.out::println);
+		  //List<Long> markedList = list.stream()
+				  //map(null)
+
 		  // pass 2 mark 0 on spacing
 		  // pass 3 not required - mark ends >= 0
 		  // pass 4 iterate remaining - skip K
-		    
+		  Arrays.stream(array).forEach(System.out::println);
 		  
 		  return 0L;
 	  }
@@ -88,7 +94,7 @@ public class Search {
 		//search.determineLeftToRightGlobalOrder2();
 		//int[][] array = {{0,0,1},{1,0,0}};
 		//search.filledCellsPercentage(2, 3, array );
-		long[] array = {2,6};
-		System.out.println(search.getMaxSparseFill(10L,1L,2L, array));
+		int[] array = {2,6};
+		System.out.println("Result: " + search.getMaxSparseFill(10L,1L,2L, array));
 	}
 }
