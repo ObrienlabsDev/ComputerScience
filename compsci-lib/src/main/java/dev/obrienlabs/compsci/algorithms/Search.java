@@ -73,14 +73,16 @@ public class Search {
 		  // data structure? - use .filter (convert Array to List)
 		  int[] array = new int[10];
 		  
-		  
-		  //List<Integer> setList = Arrays.stream(S).boxed().collect(Collectors.toList());
-		  Arrays.stream(S).forEach(n -> array[n-1] = 1);
 		  // pass 1 mark S
-		  //List<Long> markedList = list.stream()
-				  //map(null)
+		  //List<Integer> setList = Arrays.stream(S).boxed().collect(Collectors.toList());
+		  Arrays.stream(S).forEach(n -> {
+			  array[n - 1] = 1;
+		  });
+		  long initialCount = Arrays.stream(array).count();
+		  System.out.println("Before: " + initialCount);
 
 		  // pass 2 mark 0 on spacing
+	
 		  // pass 3 not required - mark ends >= 0
 		  // pass 4 iterate remaining - skip K
 		  Arrays.stream(array).forEach(System.out::println);
