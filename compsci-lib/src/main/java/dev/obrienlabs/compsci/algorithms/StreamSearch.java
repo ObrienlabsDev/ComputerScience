@@ -15,6 +15,15 @@ public class StreamSearch {
 		data.stream().distinct().forEach(a -> System.out.println(a + ", "));
 		System.out.println("original: " + names.size() + " distict: " + data.stream().distinct().count());
 		
+		// flatMap
+		List<String> names1 = Arrays.asList("Alice", "Bob", "Charlie");
+		List<String> names2 = Arrays.asList("Bob", "Dana", "Eve");
+		List<String> names3 = Arrays.asList("Frank", "Eve", "George", "Heidi");
+		List<List<String>> listOfLists = Arrays.asList(names1, names2, names3);
+		// iterate all names as one
+		StringBuffer buffer = new StringBuffer();
+		listOfLists.stream().flatMap(a -> a.stream()).forEach(b -> buffer.append(b).append(", "));
+		System.out.println(buffer.toString());
 	}
 
 	public static void main(String[] args) {
