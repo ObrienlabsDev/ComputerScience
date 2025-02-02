@@ -24,6 +24,10 @@ public class StreamSearch {
 		StringBuffer buffer = new StringBuffer();
 		listOfLists.stream().flatMap(a -> a.stream()).forEach(b -> buffer.append(b).append(", "));
 		System.out.println(buffer.toString());
+		
+		// limit
+		System.out.println("Limit");
+		listOfLists.stream().limit(2).forEach(a -> System.out.println(a));
 	}
 
 	public static void main(String[] args) {
