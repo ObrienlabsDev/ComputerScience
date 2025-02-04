@@ -17,7 +17,7 @@ public class Fibonacci<T extends Number> {
 	
 	public static void main(String[] args) {
 		Fibonacci<Integer> f = new Fibonacci<>();
-		IntStream.range(0,15).forEach(
+		IntStream.rangeClosed(0,15).forEach(
 			i -> System.out.println(i + " = " + f.getFibonacciNumber(Integer.valueOf(i))));
 
 	}

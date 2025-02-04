@@ -79,7 +79,9 @@ public class Search {
 		  Arrays.stream(S).forEach(n -> {
 			  array[n - 1] = 1;
 			  // set before/after
-			  IntStream.rangeClosed(1, K).forEach(a -> {
+			  IntStream.rangeClosed(1, K)
+			  	.peek(b -> System.out.println(b))
+			  	.forEach(a -> {
 				  set(n - 1 - a, array);
 				  set(n - 1 + a, array);
 			  });

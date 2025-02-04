@@ -3,6 +3,9 @@ package dev.obrienlabs.compsci.algorithms;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class StreamSearch {
 	
@@ -28,6 +31,13 @@ public class StreamSearch {
 		// limit
 		System.out.println("Limit");
 		listOfLists.stream().limit(2).forEach(a -> System.out.println(a));
+		
+		// mapToInt
+		int[] numbers = {48, 49, 50};
+		List<Integer> numberList = Arrays.stream(numbers).boxed().collect(Collectors.toList());
+		//List<Integer> numberList = IntStream.of(numbers).collect(null, null, null);
+		//names.stream().mapToInt(null)
+		numberList.stream().mapToInt(n -> n + 1).forEach(System.out::println);
 	}
 
 	public static void main(String[] args) {
