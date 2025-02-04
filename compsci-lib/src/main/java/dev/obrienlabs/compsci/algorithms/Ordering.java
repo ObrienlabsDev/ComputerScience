@@ -22,9 +22,6 @@ public class Ordering {
 		queue.stream().forEach(x -> list.add(queue.removeLast()));
 		// 1 element remaining
 		list.add(queue.removeLast());
-		//int[] typedArray = new Integer[list.size()];
-		//typedArray = list.toArray();
-		//return typedArray;
 		Integer[] typedArray = list.stream().toArray(Integer[]::new);
 		return Arrays.stream(typedArray).mapToInt(x -> x).toArray();
 	}
