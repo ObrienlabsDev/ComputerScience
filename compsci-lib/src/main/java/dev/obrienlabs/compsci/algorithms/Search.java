@@ -75,6 +75,7 @@ public class Search {
 		  int[] array = new int[N];
 		  
 		  // pass 1 mark S
+		  // pass 2 mark 1 on spacing
 		  //List<Integer> setList = Arrays.stream(S).boxed().collect(Collectors.toList());
 		  Arrays.stream(S).forEach(n -> {
 			  array[n - 1] = 1;
@@ -88,11 +89,12 @@ public class Search {
 		  });
 		  long initialCount = Arrays.stream(array).count();
 		  System.out.println("Before: " + initialCount);
-
-		  // pass 2 mark 0 on spacing
 	
-		  // pass 3 not required - mark ends >= 0
-		  // pass 4 iterate remaining - skip K
+		  // pass 3 iterate remaining - skip K
+		  Arrays.stream(array).forEach(n -> {
+			  // find a 0 - mark and fill, repeat
+			  
+		  });
 		  Arrays.stream(array).forEach(System.out::println);
 		  
 		  return 0L;
@@ -116,7 +118,7 @@ public class Search {
 		  long initialCount = Arrays.stream(array).count();
 		  System.out.println("Before: " + initialCount);
 
-		  // pass 2 mark 0 on spacing
+		  // pass 2 mark on spacing
 	
 		  // pass 3 not required - mark ends >= 0
 		  // pass 4 iterate remaining - skip K
