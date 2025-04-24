@@ -17,18 +17,23 @@ public class Ordering {
 		// using a stack - no - use deque
 		Deque<Integer> queue = new ConcurrentLinkedDeque<>();
 		//List<Integer> list = Arrays.stream(a).boxed().collect(Collectors.toList());
-		Arrays.stream(a).forEach(x -> queue.add(x));
 		ArrayList<Integer> list = new ArrayList<>();
-		queue.stream().forEach(x -> list.add(queue.removeLast()));
+		//Arrays.stream(a).forEach(x -> queue.add(x));
+		//queue.stream().forEach(x -> list.add(queue.removeLast())); // this is a violation - you cant remove from the queue you are streaming
 		// 1 element remaining
-		list.add(queue.removeLast());
+		//list.add(queue.removeLast()); // requiring a workaround
+		
+		// instead use offerFirst above and iterate normally with addFirst instead of add (last)
+		Arrays.stream(a).forEach(x -> queue.offerFirst(x));
+		queue.stream().forEach(x -> list.addFirst(x));
 		Integer[] typedArray = list.stream().toArray(Integer[]::new);
 		return Arrays.stream(typedArray).mapToInt(x -> x).toArray();
 	}
 	
 	public boolean same(int[] a, int[] b) {
+		boolean identical = false;
 		
-		return true;
+		return identical;
 	}
 
 	public static void main(String[] args) {
