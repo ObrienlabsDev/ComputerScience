@@ -1,6 +1,7 @@
 package dev.obrienlabs.compsci.algorithms;
 
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Filter {
 	public static final Character A = Character.valueOf('A');
@@ -29,6 +30,9 @@ public class Filter {
 				.collect(StringBuilder::new, StringBuilder::append, StringBuilder::append); // supplier, accumulator, combiner
 		System.out.println("Modified: " + builder.toString());	
 
+		
+		// filter even numbers
+		IntStream.range(1, 20).parallel().filter(n -> n % 2 == 0).collect(Collectors.toList());
 	}
 
 }
