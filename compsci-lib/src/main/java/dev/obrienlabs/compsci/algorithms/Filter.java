@@ -1,5 +1,6 @@
 package dev.obrienlabs.compsci.algorithms;
 
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -32,7 +33,7 @@ public class Filter {
 
 		
 		// filter even numbers
-		IntStream.range(1, 20).parallel().filter(n -> n % 2 == 0).collect(Collectors.toList());
+		IntStream.range(1, 20).parallel().filter(n -> n % 2 == 0).boxed().collect(Collectors.toList());
 	}
 
 }
