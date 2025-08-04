@@ -5,3 +5,4 @@ General CS code
 - a review of my ideas throughout the 00's
 - corporate development continues in the 10's
 - consulting and Google in the 20's
+- preparation for my courses at Stanford in 2025
