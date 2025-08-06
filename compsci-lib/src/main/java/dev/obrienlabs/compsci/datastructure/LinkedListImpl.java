@@ -14,7 +14,7 @@ public class LinkedListImpl {
 	
 	public void uc1InsertionOptimized(List<Long> aList, Long p1) {
 		long start = System.currentTimeMillis();//.nanoTime();
-		p1 = Long.valueOf(2L);
+		aList.add(p1);
 		
 		LongStream.range(0, 1 << 4)//27)
 			.forEach(i -> aList.add(i));
@@ -28,8 +28,8 @@ public class LinkedListImpl {
 		System.out.println("Dur MS: " + (end - start));
 	}
 	
-	public void uc2SearchSubOptimial() {
-		
+	public boolean uc2SearchSubOptimial(List<Long> aList, Long p1) {
+		return aList.indexOf(p1) > -1;
 	}
 	
 	public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class LinkedListImpl {
 		aList.add(Long.valueOf(0L));
 		Long param = Long.valueOf(1L);
 		list.uc1InsertionOptimized(aList, param);
-		list.uc2SearchSubOptimial();
+		System.out.println("Found: " + list.uc2SearchSubOptimial(aList, param));
 		System.out.println("pass by reference size in caller: " + aList.size());
 	}
 
