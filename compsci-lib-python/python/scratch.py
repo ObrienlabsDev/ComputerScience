@@ -12,4 +12,7 @@ print(vocab)
 # work backwards and iterate the list - an O(n) operation
 
 
-
+aList = [1,5,2,8,4,7,6]
+aList.sort()
+for i in aList:
+  print(i)
