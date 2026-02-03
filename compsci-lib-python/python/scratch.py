@@ -21,3 +21,13 @@ value = 1
 aList2 = [ value**2 for value in range(5)]
 for i in aList2:
   print(i)
+
+def lists_1():
+  source = [1,3,5,7,11,13,17] 
+  target = []
+  i = 1
+
+  for x in source:
+    target.append(x)#.insert(0,x)
+  for y in target:
+    print(y)
