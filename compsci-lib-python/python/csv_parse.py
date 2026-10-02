@@ -5,8 +5,8 @@ from pathlib import Path
 #import os.path
 import csv
 
-path = Path("/Users/.../dumps2025/20251207_biometric_gps_record_16236018_rows.csv")
-#path = Path(__file__).parent / "data.csv"
+#path = Path("/Users/../dumps2025/20251207_biometric_gps_record_16236018_rows.csv")
+path = Path(__file__).parent / "data.csv"
 
 
 lines = path.read_text().splitlines()
@@ -24,9 +24,10 @@ for row in reader:
   #print(row)
   count += 1
   count_k += 1
-  if count_k == 1023:
-    print(f"{count} {row[7]},{row[19]},{row[24]}")
-    count_k = 0
+ # if count_k == 1023:
+    #print(f"{count} {row[7]},{row[19]},{row[24]}")
+  print(row)
+#    count_k = 0
 
 print(count)
 
